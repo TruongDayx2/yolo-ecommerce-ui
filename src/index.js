@@ -5,12 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import './assets/boxicons-2.0.7/css/boxicons.min.css'
 import './sass/index.scss'
 
-import Layout from './components/Layout'
+import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Layout />
+    <App />
   </React.StrictMode>
 );
 
