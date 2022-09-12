@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Grid = props => {
-
     const style ={
         gap: props.gap ? `${props.gap}px` : '0'
     }
@@ -13,7 +12,8 @@ const Grid = props => {
 
   return (
     <div className={`grid ${col} ${mdCol} ${smCol}`} style={style}>
-        {props.chilren}
+        {props.children}
+        
     </div>
   )
 }
