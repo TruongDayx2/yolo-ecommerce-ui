@@ -181,7 +181,13 @@
             .index{
                 font-size: 1.5rem;
             }
+
+            @include mobile{
+                font-size: 1.5rem;
+            }
         }
+
+
     }
 }
 
