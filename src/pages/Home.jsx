@@ -11,6 +11,9 @@ const Home = () => {
             {/* Hero slider */}
             <HeroSlider
                 data={heroSliderData}
+                control={true}
+                auto={true}
+                timeOut={5000}
             />
             {/* End hero slider */}
         </Helmet>
