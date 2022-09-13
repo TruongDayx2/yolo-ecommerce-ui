@@ -66,17 +66,21 @@ a:hover{
     }
 }
 
-.body{
-    position: relative;
-    top: $header-height;
-}
+// .body{
+//     position: relative;
+//     top: $header-height;
+
+//     @include tablet{
+//         top:$header-tablet-height;
+//     }
+// }
 
 .container {
     width: 100%;
     max-width: 1620px;
     padding: 0 50px;
     margin: auto;
-    height: 1000px;
+
 
     @include tablet {
         padding: 0 20px;
