@@ -4,6 +4,8 @@
     padding-left: 0;
     box-shadow: $box-shadow;
     transition: transform .3s ease;
+    height: 100px;
+
 
     &:hover{
         transform: translateY(-20%);
@@ -24,11 +26,13 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 10px;
+
         }
 
         &__description{
             font-size: 1rem;
             color: $txt-second-color;
+
         }
     }
 }
