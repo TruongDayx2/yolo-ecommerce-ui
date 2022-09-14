@@ -2,6 +2,7 @@ import React from "react";
 
 import Helmet from "../components/Helmet";
 import HeroSlider from "../components/HeroSlider";
+import Section, {SectionTilte, SectionBody} from "../components/Section";
 
 import heroSliderData from "../assets/fake-data/hero-slider";
 
