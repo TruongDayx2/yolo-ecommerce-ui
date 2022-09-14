@@ -8,7 +8,7 @@ const Section = props => {
   )
 }
 
-export const Section__title = props => {
+export const SectionTitle = props => {
     return (
       <div className='section__title'>
           {props.children}
@@ -16,7 +16,7 @@ export const Section__title = props => {
     )
 }
 
-export const Section__body = props => {
+export const SectionBody = props => {
     return (
       <div className='section__body'>
           {props.children}
