@@ -1,16 +1,18 @@
 import React from "react";
+import { useState,useCallback,useEffect } from "react";
 
 import Helmet from "../components/Helmet";
-import Grid from "../components/Grid";
-import ProductCard from "../components/ProductCard";
 import CheckBox from "../components/CheckBox";
 import Button from "../components/Button";
+import InfinityList from "../components/InfinityList";
 
 import productData from "../assets/fake-data/products";
 import category from "../assets/fake-data/category";
 import colors from "../assets/fake-data/product-color";
 import size from "../assets/fake-data/product-size";
-import { useState,useCallback,useEffect } from "react";
+
+
+
 
 const Catalog = () => {
     const initFilter = {
@@ -108,7 +110,6 @@ const Catalog = () => {
 
     return (
         <Helmet title="Sản phẩm">
-            {console.log(filter)}
             <div className="catalog">
                 <div className="catalog__filter">
                     {/* Danh mục sản phẩm  */}
@@ -199,18 +200,10 @@ const Catalog = () => {
                     </div>
                 </div>
                 <div className="catalog__content">
-                    <Grid col={3} mdCol={2} smCol={1} gap={20}>
-                        {products.map((item, index) => (
-                            <ProductCard
-                                key={index}
-                                img01={item.image01}
-                                img02={item.image02}
-                                title={item.title}
-                                price={item.price}
-                                slug={item.slug}
-                            />
-                        ))}
-                    </Grid>
+                    <InfinityList
+                        data={products}
+                    />
+                    
                 </div>
             </div>
         </Helmet>
