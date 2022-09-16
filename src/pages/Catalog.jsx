@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useCallback,useEffect } from "react";
+import { useState,useCallback,useEffect, useRef } from "react";
 
 import Helmet from "../components/Helmet";
 import CheckBox from "../components/CheckBox";
@@ -106,12 +106,24 @@ const Catalog = () => {
         updateProducts()
         
     }, [updateProducts])
+
+    // Tablet/mobile
+
+    const filterRef = useRef(null)
     
+    const showHideFilter = ()=> filterRef.current.classList.toggle('active')
+
 
     return (
         <Helmet title="Sản phẩm">
             <div className="catalog">
-                <div className="catalog__filter">
+                <div className="catalog__filter" ref={filterRef}>
+                    <div 
+                        className="catalog__filter__close" 
+                        onClick={()=>showHideFilter()}
+                    >
+                        <i className="bx bx-left-arrow-alt"></i>
+                    </div>
                     {/* Danh mục sản phẩm  */}
                     <div className="catalog__filter__widget">
                         <div className="catalog__filter__widget__title">
@@ -198,6 +210,14 @@ const Catalog = () => {
                             <Button size="sm" onClick={clearFilter}>Xóa bộ lọc</Button>
                         </div>
                     </div>
+                </div>
+                <div className="catalog__filter__toggle">
+                    <Button 
+                        size="sm"
+                        onClick={()=>showHideFilter()}
+                    >
+                        Bộ lọc
+                    </Button>
                 </div>
                 <div className="catalog__content">
                     <InfinityList
