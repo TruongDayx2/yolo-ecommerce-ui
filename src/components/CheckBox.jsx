@@ -7,7 +7,7 @@ const CheckBox = props => {
     const inputRef = useRef(null)
     const onChange = ()=> {
         if(props.onChange){
-            props.onChange(inputRef)
+            props.onChange(inputRef.current)
         }
     }
 
