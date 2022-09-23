@@ -5,6 +5,7 @@ import Helmet from "../components/Helmet";
 import CheckBox from "../components/CheckBox";
 import Button from "../components/Button";
 import InfinityList from "../components/InfinityList";
+//import Paging from "../components/Paging";
 
 import productData from "../assets/fake-data/products";
 import category from "../assets/fake-data/category";
@@ -113,6 +114,9 @@ const Catalog = () => {
     
     const showHideFilter = ()=> filterRef.current.classList.toggle('active')
 
+    window.onbeforeunload = function () {
+        window.scrollTo(0,0);
+    };
 
     return (
         <Helmet title="Sản phẩm">
@@ -223,6 +227,9 @@ const Catalog = () => {
                     <InfinityList
                         data={products}
                     />
+                    {/* <Paging
+                        data={products}
+                    /> */}
                     
                 </div>
             </div>

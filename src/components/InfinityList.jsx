@@ -18,6 +18,9 @@ const InfinityList = props => {
 
     const [index, setIndex] = useState(0)
 
+    const [showButton,setShowButton] = useState(false)
+
+
 
     useEffect(() => {
         setData(props.data.slice(0,perLoad))
@@ -29,11 +32,26 @@ const InfinityList = props => {
             if (listRef && listRef.current){
                 if(window.scrollY + window.innerHeight  >= listRef.current.clientHeight + listRef.current.offsetTop + 200)
                 {
-                    setLoad(true)
+                    setLoad(true)                   
                 }
+            }
+            if (window.scrollY > 1000){
+                setShowButton(true)
+            }else{
+                setShowButton(false)
             }
         })
     },[listRef])
+
+    const scrollToTop = ()=>{
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    }
+
+    console.log(showButton)
+    //console.log(window.scrollY)
 
     useEffect(()=>{
         const getItems = ()=>{
@@ -68,6 +86,11 @@ const InfinityList = props => {
                     />
                 ))}
             </Grid>
+            {showButton && (
+        <button onClick={scrollToTop} className="back-to-top">
+            
+        </button>
+      )}
         </div>
     )
 }
