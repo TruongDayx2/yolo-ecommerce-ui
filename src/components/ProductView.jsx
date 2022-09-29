@@ -76,6 +76,7 @@ const ProductView = (props) => {
                 quantity:quantity,
                 price:product.price
             }))
+            alert("success")
         }
     }
 

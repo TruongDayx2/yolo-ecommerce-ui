@@ -8,19 +8,20 @@ import productData from '../assets/fake-data/products'
 
 import Helmet from '../components/Helmet'
 import Button from '../components/Button'
+import CartItem from '../components/CartItem'
 import numberWithComman from '../utils/numberWithCommand'
 
 const Cart = () => {
 
     const cartItems = useSelector((state)=>state.cartItems.value)
 
-    const [cartProducts, setCartProducts] = useState([])
+    const [cartProducts, setCartProducts] = useState(productData.getCartItemsInfo(cartItems))
 
     const [totalProducts, setTotalProducts] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
 
     useEffect(() => {
-        setCartProducts(productData.getCartItemsDetail(cartItems))
+        setCartProducts(productData.getCartItemsInfo(cartItems))
         setTotalProducts(cartItems.reduce((total,item)=>total + Number(item.quantity) , 0))
         setTotalPrice(cartItems.reduce((total,item)=>total + (Number(item.quantity) * Number(item.price)) , 0))
     }, [cartItems])
@@ -47,8 +48,13 @@ const Cart = () => {
                             <Button size="block">Tiếp tục mua hàng</Button>
                         </Link>
                     </div>
-                    
-                    
+                </div>
+                <div className="cart__list">
+                    {
+                        cartProducts.map((item, index) => (
+                            <CartItem item={item} key={index}/>
+                        ))
+                    }
                 </div>
             </div>
         </Helmet>
