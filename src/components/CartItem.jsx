@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux'
 import numberWithComman from '../utils/numberWithCommand'
 import { Link } from 'react-router-dom'
 
+import { updateItem, removeItem } from '../redux/shopping-cart/cartItemSlide'
+
 
 const CartItem = props => {
 
@@ -21,15 +23,17 @@ const CartItem = props => {
 
     const updateQuantity = (opt) =>{
         if(opt === '+'){
-            setQuantity(quantity +1)
+            dispatch(updateItem({...item,quantity:quantity+1}))
+            //setQuantity(quantity +1)
         }
         if(opt === '-'){
-            setQuantity(quantity -1 === 0 ? 1 : quantity -1)
+            dispatch(updateItem({...item,quantity:quantity -1 === 0 ? 1 : quantity -1}))
+            //setQuantity(quantity -1 === 0 ? 1 : quantity -1)
         }
     }
 
     const removeCartItem = ()=>{
-        console.log('fdfd')
+        dispatch(removeItem(item))
     }
     
 

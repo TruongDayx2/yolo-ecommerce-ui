@@ -27,8 +27,29 @@ export const cartItemSlide = createSlice({
                 }]
             }
             localStorage.setItem('cartItems',JSON.stringify(sortItem(state.value)))
+        },
+        updateItem:(state,action) =>{
+            const itemUpdate = action.payload
+
+            const item = findItem(state.value, itemUpdate)
+
+            if (item.length > 0){
+                state.value = delItem(state.value,itemUpdate)
+                state.value = [...state.value,{
+                    ...itemUpdate,
+                    id:item[0].id,
+                    
+                }]
+                localStorage.setItem('cartItems',JSON.stringify(sortItem(state.value)))
+
+            }
+        },
+        removeItem:(state,action)=>{
+            const item = action.payload
+            state.value = delItem(state.value,item)
+            localStorage.setItem('cartItems',JSON.stringify(sortItem(state.value)))
+
         }
-        //console.log(cartItem)
     }
 })
 
@@ -36,7 +57,7 @@ const findItem = (arr,item) => arr.filter(e=>e.slug===item.slug && e.color === i
 const delItem = (arr,item) => arr.filter(e=>e.slug!==item.slug || e.color !== item.color || e.size !== item.size)
 const sortItem = (arr) => arr.sort((a,b)=>a.id > b.id ? 1: (a.id < b.id ? -1 : 0))
 
-export const { addItem } = cartItemSlide.actions
+export const { addItem, updateItem, removeItem } = cartItemSlide.actions
 
 export default cartItemSlide.reducer
 
