@@ -1,11 +1,12 @@
 .product{
     @include flex(flex-start,flex-start);
-    margin-top: $header-height + 20px;
+    //margin-top: $header-height + 20px;
 
     @include mobile{
         flex-direction: column;
-        margin-top: $header-mobile-height;
+        //margin-top: $header-mobile-height;
     }
+
 
     &__images{
         @include flex(flex-start,flex-start);

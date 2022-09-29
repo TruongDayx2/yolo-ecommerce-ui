@@ -5,6 +5,7 @@ import { publicRoutes } from './routes/Routes';
 import Layout from './components/Layout';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProductViewModal from './components/ProductViewModal';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                     })}
                 </Routes>
                 <Footer/>
+                <ProductViewModal/>
             </div>
         </Router>
     );

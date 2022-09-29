@@ -99,7 +99,7 @@ a:hover{
 }
 
 .main {
-    margin-top: $header-height;
+    margin-top: $header-height +20px;
     margin-bottom: 2rem;
     min-height: 100vh;
 
