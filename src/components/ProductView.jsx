@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { addItem } from "../redux/shopping-cart/cartItemSlide";
+
 
 import Button from "./Button";
 import numberWithComman from "../utils/numberWithCommand";
@@ -11,6 +15,7 @@ import withRouter from "../routes/withRouter";
 const ProductView = (props) => {
     let product = props.product;
 
+    const dispatch = useDispatch()
 
     if(product === undefined) 
         product = {
@@ -63,13 +68,31 @@ const ProductView = (props) => {
     }
 
     const addToCart = ()=>{
-        if (check()) console.log(color,size,quantity)
+        if (check()) {
+            dispatch(addItem({
+                slug:product.slug,
+                color:color,
+                size:size,
+                quantity:quantity,
+                price:product.price
+            }))
+        }
     }
 
     const history = useNavigate()
 
     const goToCart =()=>{
-        if (check()) history('/cart')
+        if (check()){
+            dispatch(addItem({
+                slug:product.slug,
+                color:color,
+                size:size,
+                quantity:quantity,
+                price:product.price
+            }))
+            history('/cart')
+            
+        } 
     }
 
     return (

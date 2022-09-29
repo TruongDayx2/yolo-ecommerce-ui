@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 
 import Grid from './Grid'
 import ProductCard from './ProductCard'
+import Button from './Button'
 
 
 const InfinityList = props => {
@@ -86,11 +87,15 @@ const InfinityList = props => {
                     />
                 ))}
             </Grid>
-            {showButton && (
-        <button onClick={scrollToTop} className="back-to-top">
+            {/* {showButton && (
+        <Button 
+            size="sm"       
             
-        </button>
-      )}
+            onClick={scrollToTop} 
+        >
+           <i class='bx bx-chevrons-up'></i> 
+        </Button>
+      )} */}
         </div>
     )
 }
