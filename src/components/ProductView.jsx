@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "./Button";
 import numberWithComman from "../utils/numberWithCommand";
+
+import withRouter from "../routes/withRouter";
 
 const ProductView = (props) => {
     const product = props.product;
@@ -25,6 +28,38 @@ const ProductView = (props) => {
         }
     }
 
+    useEffect(() => {
+        setQuantity(1)
+        setColor(undefined)  
+        setSize(undefined)
+        setDescriptionExpand(false)
+        setPreviewImg(product.image01)
+    }, [product])
+    
+    const check=()=>{        
+        if (color === undefined){
+            alert('Vui lòng chọn màu sắc!')
+            return false
+        }
+
+        if (size === undefined){
+            alert('Vui lòng chọn màu sắc!')
+            return false
+        }
+
+        return true
+
+    }
+
+    const addToCart = ()=>{
+        if (check()) console.log(color,size,quantity)
+    }
+
+    const history = useNavigate()
+
+    const goToCart =()=>{
+        if (check()) history('/cart')
+    }
 
     return (
         <div className="product">
@@ -120,7 +155,29 @@ const ProductView = (props) => {
                         </div>
                     </div>
                 </div>
+                <div className="product__info__item">
+                    <Button onClick={()=>addToCart()}>Thêm vào giỏ</Button>
+                    <Button onClick={()=>goToCart()}>Mua ngay</Button>
+                </div>
             </div>
+            <div className={`product-description mobile ${descriptionExpand ? 'expand' : ''}`}>
+                    <div className="product-description__title">
+                        Chi tiết sản phẩm
+                    </div>
+                    <div
+                        className="product-description__content"
+                        dangerouslySetInnerHTML={{
+                            __html: product.description,
+                        }}
+                    ></div>
+                    <div className="product-description__toggle">
+                        <Button size="sm" onClick={()=>setDescriptionExpand(!descriptionExpand)}>
+                            {
+                                descriptionExpand ? 'Thu gọn' : 'Xem thêm'
+                            }
+                        </Button>
+                    </div>
+                </div>
         </div>
     );
 };
@@ -129,4 +186,4 @@ ProductView.propTypes = {
     product: PropTypes.object.isRequired,
 };
 
-export default ProductView;
+export default withRouter(ProductView);
